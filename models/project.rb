@@ -8,6 +8,7 @@ class Project < ActiveRecord::Base
   
   validates_uniqueness_of :name, :slug
   before_validation :set_slug
+  validates_format_of :slug, :with => /^[0-9a-z_]+$/
   
   def to_uri
     '/projects/' + slug
@@ -40,7 +41,7 @@ class Project < ActiveRecord::Base
   private
   
   def set_slug
-    self.slug = name.underscore if slug.blank?
+    self.slug = name.downcase.gsub(/[^0-9a-z]/, '_').squeeze('_') if slug.blank?
   end
     
 end

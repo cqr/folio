@@ -15,6 +15,7 @@ end
 # are all there.
 
 gem 'rack-flash'
+gem 'bluecloth'
 
 group :test do
   gem 'rspec', :require => 'spec/expectations'
