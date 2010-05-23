@@ -1,0 +1,11 @@
+-title 'All Projects'
+%h2 All Projects
+%ul
+  - @projects.each do |project|
+    %li.project_summary
+      %section.project
+        %h3=link_to project
+        -unless project.description.blank?
+          %p= project.description
+        -else
+          %p No Description

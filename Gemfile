@@ -14,6 +14,8 @@ end
 # and then run bundle install to make sure they
 # are all there.
 
+gem 'rack-flash'
+
 group :test do
   gem 'rspec', :require => 'spec/expectations'
   gem 'capybara'

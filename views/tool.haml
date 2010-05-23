@@ -1,0 +1,6 @@
+-title "Tools"
+-title @tool
+%h2 Projects using #{@tool}
+%ul.tool_projects
+  -@tool.projects.each do |project|
+    %li=link_to project

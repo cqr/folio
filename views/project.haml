@@ -1,0 +1,16 @@
+-title @project
+%h2=@project
+-unless @project.url.blank?
+  %section.project_url
+    %h3 URL:
+    =link_to @project.url, nil, :class => 'project_url'
+-unless @project.tools.empty?
+  %section.project_tools
+    %h3 Tools Used:
+    %ul.project_tools
+      -@project.tools.each do |tool|
+        %li=link_to tool
+-unless @project.description.blank?
+  %section.project_description
+    %h3 Description:
+    .project_description=@project.description_html

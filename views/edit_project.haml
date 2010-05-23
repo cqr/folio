@@ -1,0 +1,22 @@
+-title (@project.new_record? ? 'Create Project' : "Editing Project '#{@project}'")
+%h2=(@project.new_record? ? 'New Project' : "Edit Project, &#147;#{link_to @project}&#148;")
+=form_for @project do |f|
+  -if @project.errors.any?
+    %ul.errors
+      -@project.errors.full_messages.each do |error|
+        %li=error
+  %ul
+    %li
+      =f.label :name
+      =f.text_field :name
+    %li
+      =f.label :url
+      =f.text_field :url
+    %li
+      =f.label :tools
+      =f.text_field :tools
+    %li.textarea
+      =f.label :description
+      =f.textarea :description
+  =f.submit_button
+    

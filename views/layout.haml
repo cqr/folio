@@ -1,0 +1,10 @@
+!!! 5
+%html
+  %head
+    %title= title
+    %link{:rel=>'stylesheet', :type=>'text/css', :href=>'/application.css', :media=>'screen, projection'}/
+  %body
+    %h1=link_to Project, "Chris Rhoden's Portfolio"
+    -if logged_in?
+      =haml :_admin_links, :layout => false
+    =yield
