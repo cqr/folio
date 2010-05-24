@@ -30,7 +30,7 @@ class Project < ActiveRecord::Base
     if tools_list.kind_of? String
       self.tools.clear
       return tools_list.split(' ').each do |tool_name|
-        self.tools.push(Tool.find_or_create_by_name(tool_name)) unless tool_name.blank?
+        self.tools.push(Tool.find_or_build_by_name(tool_name.downcase)) unless tool_name.blank?
       end
     end
   end
