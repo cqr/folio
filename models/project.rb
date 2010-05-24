@@ -7,6 +7,10 @@ class Project < ActiveRecord::Base
     '/projects/'
   end
   
+  def self.to_s
+    'all projects'
+  end
+  
   validates_uniqueness_of :name, :slug
   before_validation :set_slug
   validates_format_of :slug, :with => /^[0-9a-z_]+$/

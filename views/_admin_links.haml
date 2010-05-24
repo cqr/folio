@@ -3,4 +3,4 @@
     %li=link_to uri_for(@project) + '/edit', 'Edit ' + @project.to_s
   -if !@project or !@project.new_record?
     %li=link_to uri_for(Project) + 'new', 'New Project'
-  %ul=link_to '/logout', 'Logout'
+  %li=link_to '/logout', 'Logout'

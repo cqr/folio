@@ -4,7 +4,14 @@
     %title= title
     %link{:rel=>'stylesheet', :type=>'text/css', :href=>'/application.css', :media=>'screen, projection'}/
   %body
-    %h1=link_to Project, "Chris Rhoden's Portfolio"
+    %header
+      %h1=link_to Project, "Chris Rhoden's Portfolio"
+      %ul.navigation
+        %li=link_to Project
+        %li=link_to Tool
+        %li=link_to 'http://chrisrhoden.com/', 'chrisrhoden.com'
+        %li=link_to 'http://chrisrhoden.github.com', 'open-source projects'
+        %li=link_to 'http://github.com/chrisrhoden', 'public repositories'
     -if logged_in?
       =haml :_admin_links, :layout => false
     =yield
