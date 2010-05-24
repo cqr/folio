@@ -2,13 +2,8 @@ class Project < ActiveRecord::Base
   
   has_and_belongs_to_many :tools
   
-  
   def self.to_uri
     '/projects/'
-  end
-  
-  def self.to_s
-    'all projects'
   end
   
   validates_uniqueness_of :name, :slug

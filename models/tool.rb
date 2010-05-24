@@ -22,8 +22,4 @@ class Tool < ActiveRecord::Base
   def self.to_uri
     '/tools'
   end
-  
-  def self.to_s
-    'all tools'
-  end
 end
