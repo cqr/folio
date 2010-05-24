@@ -62,7 +62,19 @@ get '/tools/:slug/?' do
 end
 
 get '/tools/?' do
-  @tools = Tool.find(:all, :order => 'name ASC')
+  @tools = Tool.all(:order => 'name ASC')
+  max, min = 0, 99999
+  @tools.each do |tool|
+    max = tool.projects.size if max < tool.projects.size
+    min = tool.projects.size if min > tool.projects.size
+  end
+  delta = max - min
+  @size = {}
+  @size[max] = 10
+  @size[min] = 1
+  ((min+1)...max).each do |n|
+    @size[n] = ((10.0 * (n-min))/delta.to_f).ceil
+  end
   haml :tools_list
 end 
 

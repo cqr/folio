@@ -8,6 +8,9 @@ class Project < ActiveRecord::Base
   
   validates_uniqueness_of :name, :slug
   before_validation :set_slug
+  after_save do
+    Tool.all(:conditions => '(SELECT COUNT(*) FROM "projects_tools" WHERE "projects_tools".tool_id = "tools".id LIMIT 1) < 1').each(&:delete)
+  end
   validates_format_of :slug, :with => /^[0-9a-z_]+$/
   
   attr_protected :slug
@@ -33,6 +36,7 @@ class Project < ActiveRecord::Base
         end
       end
     end
+    
   end
   
   def tools_with_joining
