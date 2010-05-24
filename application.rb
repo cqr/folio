@@ -18,6 +18,10 @@ helpers do
     redirect '/login' unless logged_in?
   end
   
+  def current_url
+    request.uri
+  end
+  
 end
 
 use Rack::Session::Cookie
