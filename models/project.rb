@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   
   has_and_belongs_to_many :tools
   
+  
   def self.to_uri
     '/projects/'
   end
@@ -9,6 +10,8 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :name, :slug
   before_validation :set_slug
   validates_format_of :slug, :with => /^[0-9a-z_]+$/
+  
+  attr_protected :slug
   
   def to_uri
     '/projects/' + slug
