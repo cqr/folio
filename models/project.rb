@@ -29,8 +29,13 @@ class Project < ActiveRecord::Base
     return self.tool_ids=(tools_list.map(&:id)) if tools_list.kind_of? Array
     if tools_list.kind_of? String
       self.tools.clear
-      return tools_list.split(' ').each do |tool_name|
-        self.tools.push(Tool.find_or_build_by_name(tool_name.downcase)) unless tool_name.blank?
+      return tools_list.downcase.split(' ').each do |tool_name|
+        tool = Tool.find_by_name(tool_name) unless tool_name.blank?
+        if tool
+          self.tools.push tool
+        else
+          self.tools.build(:name => tool_name)
+        end
       end
     end
   end
