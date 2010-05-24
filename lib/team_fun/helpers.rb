@@ -16,7 +16,7 @@ module ::TeamFun::Helpers
     form << haml_indent << "  <input type='hidden' name='_method' value='#{method}' />\n" if method
     block = capture_haml(::TeamFun::FormBuilder.new(options, object, self), &block)
     block.each_line do |line|
-      form << haml_indent + '  ' if line =~ /^[\t\s\w]+</
+      form << haml_indent + '  ' if line =~ /^[\t\s\w]*</
       form << line
     end
     form + "</form>"
