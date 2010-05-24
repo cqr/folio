@@ -8,7 +8,7 @@
   %section.project_tools
     %h3 Tools Used:
     %ul.project_tools
-      -@project.tools.each do |tool|
+      -@project.tools.find(:all, :order => 'name ASC').each do |tool|
         %li=link_to tool
 -unless @project.description.blank?
   %section.project_description
