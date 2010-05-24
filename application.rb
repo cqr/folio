@@ -13,6 +13,11 @@ helpers do
   def logged_in?
     session[:authenticated]
   end
+  
+  def require_login
+    redirect '/login' unless logged_in?
+  end
+  
 end
 
 use Rack::Session::Cookie
@@ -57,11 +62,13 @@ get '/tools/:slug/?' do
 end
 
 get '/projects/new' do
+  require_login
   @project = Project.new
   haml :edit_project
 end
 
 get '/projects/:slug/edit' do
+  require_login
   @project = Project.find_by_slug(params[:slug])
   if @project
     haml :edit_project
@@ -82,6 +89,7 @@ get '/projects/:slug/?' do
 end
 
 post '/projects' do
+  require_login
   @project = Project.new(params[:project])
   if @project.save
     flash[:success] = 'Project created'
@@ -92,6 +100,7 @@ post '/projects' do
 end
 
 put '/projects/:slug' do
+  require_login
   @project = Project.find_by_slug(params[:slug])
   if @project
     @project.update_attributes(params[:project])
