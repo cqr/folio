@@ -61,6 +61,11 @@ get '/tools/:slug/?' do
   flash[:error] = 'Invalid tool!' and redirect_to Project
 end
 
+get '/tools/?' do
+  @tools = Tool.find(:all, :order => 'name ASC')
+  haml :tools_list
+end 
+
 get '/projects/new' do
   require_login
   @project = Project.new

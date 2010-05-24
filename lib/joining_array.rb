@@ -3,7 +3,7 @@ class JoiningArray
     @object = array
   end
   
-  def to_s
+  def to_html
     @object.join(' ')
   end
   
