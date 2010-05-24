@@ -28,7 +28,7 @@ use Rack::Session::Cookie
 use Rack::Flash
 
 get '/' do
-  @projects = Project.all
+  @projects = Project.all(:order => 'name ASC')
   haml :projects_list
 end
 
