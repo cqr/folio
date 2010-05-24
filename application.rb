@@ -19,7 +19,7 @@ helpers do
   end
   
   def current_url
-    request.uri
+    request.url.split('/')[3..-1].join('/')
   end
   
 end

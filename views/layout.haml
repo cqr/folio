@@ -5,13 +5,14 @@
     %link{:rel=>'stylesheet', :type=>'text/css', :href=>'/application.css', :media=>'screen, projection'}/
   %body
     %header
+      = current_url
       %h1=link_to Project, "Chris Rhoden's Portfolio"
       %ul.navigation
         %li=link_to Project, 'projects', :class => ('active' unless current_url =~ /^tools/ )
-        %li=link_to Tool, 'tools', :class => ('active' if current_url =~ /^tools/ )
+        %li=link_to Tool, 'tools', :class => ('active' if current_url =~ /^tools/)
         %li=link_to 'http://chrisrhoden.github.com', 'open-source projects'
         %li=link_to 'http://github.com/chrisrhoden', 'public repositories'
-        %li=link_to 'http://chrisrhoden.com', 'chrisrhoden.com', 
+        %li=link_to 'http://chrisrhoden.com', 'chrisrhoden.com'
     -if logged_in?
       =haml :_admin_links, :layout => false
     =yield
