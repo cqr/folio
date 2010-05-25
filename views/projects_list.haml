@@ -8,7 +8,7 @@
           %img{:src => project.image_url}
         %h3=link_to project
         -unless project.description.blank?
-          %p= project.description
+          .project_description= project.description_html
         -else
           %p No Description
       %br{:class => 'clear'}/
