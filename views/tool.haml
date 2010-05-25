@@ -1,6 +1,14 @@
 -title "Tools"
 -title @tool
 %h2 Projects using #{@tool}
-%ul.tool_projects
-  -@tool.projects.each do |project|
-    %li=link_to project
+%ul
+  - @tool.projects.each do |project|
+    %li.project_summary
+      %section.project
+        -unless project.image_url.blank?
+          %img{:src => project.image_url}
+        %h3=link_to project
+        -unless project.description.blank?
+          %p= project.description
+        -else
+          %p No Description

@@ -16,7 +16,12 @@ h1, h2
   letter-spacing: -0.07em
 p
   line-height: 1.4em
-  letter-spacing: .15em
+  letter-spacing: .05em
+  font-family: Helvetica, Arial, Sans-Serif
+  &.tools_description
+    float: left
+    width: 220px
+    text-align: justify
 h1
   font-size: 3.5em
   text-align: center
@@ -30,7 +35,8 @@ h1
 header
   border-bottom: 3px solid #EEE
   display: block
-    
+.project_description
+  margin-left: 230px
 h2
   font-size: 2.5em
   margin-left: 220px
@@ -107,6 +113,7 @@ ul
   list-style-type: none
   padding: 0
   &.cloud
+    margin-left: 230px
     text-align: justify
     li
       padding: .2em
@@ -147,6 +154,7 @@ ul
       border: none !important
       padding: 0px !important
       margin: 0px !important
+      text-transform: uppercase
       a
         color: #000
         padding: 10px 18px !important
