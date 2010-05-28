@@ -5,7 +5,8 @@
     %li.project_summary
       %section.project
         -unless project.image_url.blank?
-          %img{:src => project.image_url}
+          %a{:href => project.to_uri}
+            %img{:src => project.image_url}
         %h3=link_to project
         -unless project.description.blank?
           .project_description= project.description_html
