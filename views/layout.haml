@@ -11,7 +11,7 @@
         %li=link_to Tool, 'tools', :class => ('active' if current_url =~ /^tools/)
         %li=link_to 'http://chrisrhoden.github.com', 'open-source projects'
         %li=link_to 'http://github.com/chrisrhoden', 'public repositories'
-        %li=link_to 'http://chrisrhoden.com', 'chrisrhoden.com'
+        %li=link_to '/resume.pdf', 'resume'
     -if logged_in?
       =haml :_admin_links, :layout => false
     =yield
