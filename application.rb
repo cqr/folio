@@ -5,7 +5,7 @@ load File.join(File.dirname(__FILE__), 'environment.rb')
 
 helpers do
   def title(string = nil)
-    @title ||= 'Chris Rhoden\'s Portfolio'
+    @title ||= Config.site[:name]
     @title << ' :: ' + string.to_s if string
     @title
   end
@@ -42,7 +42,7 @@ get '/login' do
 end
 
 post '/login' do
-  if params[:username] == 'chrisrhoden' and params[:password] == 'mypass'
+  if Config.users[params[:username]] == params[:password]
     session[:authenticated] = true
     redirect_to Project
   else
