@@ -7,8 +7,15 @@ Then /^I should be logged in$/ do
 end
 
 Given /^I am logged in$/ do
+  Given "there is one user \"u:p\""
   Given "I am at \"/login\""
-  When "I fill in \"username\" with \"chrisrhoden\""
-  When "I fill in \"password\" with \"mypass\""
+  When "I fill in \"username\" with \"u\""
+  When "I fill in \"password\" with \"p\""
   When "I press \"Login\""
 end
+
+Given /^there is one user "([^\"]*)"$/ do |uandp|
+  u, p = uandp.split(':')
+  Environment::Config.set('users', {u => p})
+end
+
