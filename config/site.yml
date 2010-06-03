@@ -1,3 +1,5 @@
-# For now, only one configuration value.
-# Should probably add more at some point.
+# Site's global configuration
 title: My Portfolio
+extra_links:
+    Google: http://google.com
+    French Google: http://google.fr

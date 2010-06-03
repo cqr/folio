@@ -5,13 +5,12 @@
     %link{:rel=>'stylesheet', :type=>'text/css', :href=>'/application.css', :media=>'screen, projection'}/
   %body
     %header
-      %h1=link_to Project, Config.site[:title]
+      %h1=link_to Project, Environment::Config.site['title']
       %ul.navigation
         %li=link_to Project, 'projects', :class => ('active' unless current_url =~ /^tools/ )
         %li=link_to Tool, 'tools', :class => ('active' if current_url =~ /^tools/)
-        %li=link_to 'http://chrisrhoden.github.com', 'open-source projects'
-        %li=link_to 'http://github.com/chrisrhoden', 'public repositories'
-        %li=link_to '/resume.pdf', 'resume'
+        - Environment::Config.site['extra_links'].each do |name, url|
+          %li=link_to url, name
     -if logged_in?
       =haml :_admin_links, :layout => false
     =yield

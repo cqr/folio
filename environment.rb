@@ -21,10 +21,14 @@ class Environment
     class << self
       def set(key, value)
         @store ||= {}
+        puts "setting #{key}!"
         @store[key.to_sym] = value
       end
     
       def get(key)
+        puts "trying to get #{key}"
+        puts "Got:"
+        p @store[key.to_sym]
         @store[key.to_sym]
       end
       
@@ -42,6 +46,10 @@ class Environment
     end
   end
 
+end
+
+def Config
+  Environment::Config
 end
 
 Environment.reload!
