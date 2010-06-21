@@ -24,11 +24,12 @@ Couldn't be easier.
 
     git clone git://github.com/chrisrhoden/folio.git my_folio
     cd my_folio
+    git checkout -b master
     echo "some_username: some_password" >> config/users.yml
     bundle install
     rake db:migrate
     rake cucumber
-    rackup config.ru && open http://localhost:9292 # on mac
+    rackup config.ru
     
 This is compatible with Heroku, so go for it.
 
